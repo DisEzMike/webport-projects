@@ -6,13 +6,15 @@ $font-text: "Kanit", sans-serif;
 
 html,
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
 body {
   font-family: $font !important;
-  background-color: #fff;
+  background-color: #ddd;
 }
 
 /* Now the super main part */
@@ -27,4 +29,38 @@ body {
   background: #afafaf;
   /* we got the background now lets make it round */
   border-radius: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+}
+
+th {
+  // last column
+  &:last-child {
+    text-align: center !important;
+  }
+}
+
+th,
+td {
+  font-family: $font-text;
+  font-size: 1rem !important;
+}
+
+td > button > span {
+  font-family: $font-text;
+}
+
+.mat-column-id {
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-column-action {
+  width: 30%;
+  text-align: center;
 }

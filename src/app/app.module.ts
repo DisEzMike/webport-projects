@@ -1,3 +1,5 @@
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { CachingInterceptor } from './helpers/caching.interceptor';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +20,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ScheduleComponent, PageComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ScheduleComponent,
+    PageComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
