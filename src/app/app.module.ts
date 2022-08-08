@@ -1,4 +1,6 @@
-import { AppRoutingModule } from './app.routing.module';
+import { CachingInterceptor } from './helpers/caching.interceptor';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -6,9 +8,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './web/home/home.component';
+import { ScheduleComponent } from './web/schedule/schedule.component';
+import { PageComponent } from './web/schedule/page/page.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent, ScheduleComponent, PageComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -20,7 +26,14 @@ import { environment } from '../environments/environment';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [],
+  providers: [
+    authInterceptorProviders,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CachingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
